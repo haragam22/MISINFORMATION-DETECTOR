@@ -1,0 +1,47 @@
+/* popup.css - simple clean styling */
+:root {
+  --bg: #ffffff;
+  --accent: #1565c0;
+  --danger: #d32f2f;
+  --muted: #666;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+  width: 360px;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: #111;
+}
+
+.container { display: flex; flex-direction: column; gap: 8px; }
+
+header { display:flex; align-items:center; gap:8px; }
+.logo { width:28px; height:28px; border-radius:6px; }
+h1 { font-size:16px; margin:0; }
+
+.input-block label { font-size:12px; color:var(--muted); }
+#claimInput { width:100%; padding:8px; font-size:13px; box-sizing:border-box; border:1px solid #ddd; border-radius:6px; resize:vertical; }
+
+.btn-row { display:flex; gap:8px; margin-top:8px; }
+button { padding:8px 10px; border-radius:6px; border:none; cursor:pointer; font-weight:600; }
+#checkSelectionBtn { background:var(--accent); color:white; flex:1; }
+#checkPageBtn { background:#eee; color:#111; flex:1; }
+
+.status { font-size:12px; color:var(--muted); margin-top:6px; }
+
+.result-card { margin-top:8px; padding:8px; border:1px solid #eee; border-radius:8px; background: #fafafa; }
+.hidden { display:none; }
+
+.verdict-line { font-weight:700; font-size:15px; margin-bottom:4px; }
+.confidence-line { font-size:12px; color:var(--muted); margin-bottom:6px; }
+
+.section h3 { margin:8px 0 4px 0; font-size:13px; }
+#evidenceList { font-size:13px; color:#222; }
+.evidence-item { margin-bottom:6px; }
+
+.signals-pre { background:#fff; border:1px solid #eee; padding:6px; border-radius:6px; font-size:12px; color:#333; max-height:120px; overflow:auto; }
+
+.raw-btn { margin-top:8px; background:#333; color:#fff; width:100%; padding:8px; border-radius:6px; }
+footer { margin-top:6px; font-size:11px; color:var(--muted); text-align:center; }

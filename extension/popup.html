@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>TruthLens</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icons/icon48.png" class="logo" alt="TruthLens">
+      <h1>TruthLens</h1>
+    </header>
+
+    <div class="input-block">
+      <label for="claimInput">Claim (selected text will auto-populate)</label>
+      <textarea id="claimInput" placeholder="Paste a claim or use right-click → Check Claim" rows="3"></textarea>
+      <div class="btn-row">
+        <button id="checkSelectionBtn">Check Selection</button>
+        <button id="checkPageBtn">Check Full Page</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">Ready</div>
+
+    <div id="resultCard" class="result-card hidden">
+      <div id="verdictLine" class="verdict-line"></div>
+      <div id="confidenceLine" class="confidence-line"></div>
+
+      <div class="section">
+        <h3>Top Evidence</h3>
+        <div id="evidenceList"></div>
+      </div>
+
+      <div class="section">
+        <h3>Transparency</h3>
+        <pre id="signalsPre" class="signals-pre"></pre>
+      </div>
+
+      <div class="section">
+        <h3>Education Tip</h3>
+        <div id="educationTip"></div>
+      </div>
+
+      <button id="rawBtn" class="raw-btn">Show raw JSON</button>
+    </div>
+
+    <footer>
+      <small>Demo mode • backendUrl in popup.js</small>
+    </footer>
+  </div>
+
+<script src="popup.js"></script>
+</body>
+</html>

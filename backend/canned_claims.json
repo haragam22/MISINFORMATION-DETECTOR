@@ -4,43 +4,41 @@
     "confidence": 0.92,
     "evidence": [
       {
-        "text": "WHO and CDC confirm that COVID-19 vaccines do not cause infertility.",
-        "link": "https://www.who.int/news-room",
-        "source": "WHO",
+        "text": "WHO: No evidence that COVID-19 vaccines cause infertility.",
+        "link": "https://www.who.int",
+        "source": "who.int",
         "stance": "refute"
       }
     ],
     "signals": {"SR": 0.9, "CC": 0.8, "SM": 0.7, "EQ": 0.9, "TC": 1.0},
-    "education_tip": "Always cross-check health claims with official health organizations."
+    "education_tip": "Cross-check health claims with WHO/CDC and peer-reviewed studies."
   },
-
   "supreme court banned firecrackers nationwide": {
     "verdict": "Disputed",
     "confidence": 0.55,
     "evidence": [
       {
-        "text": "Supreme Court issued partial bans in some states, not a full nationwide ban.",
+        "text": "Some news reports mention state-level restrictions; no clear nationwide ban found.",
         "link": "https://www.thehindu.com",
-        "source": "The Hindu",
+        "source": "thehindu.com",
         "stance": "mixed"
       }
     ],
-    "signals": {"SR": 0.7, "CC": 0.5, "SM": 0.4, "EQ": 0.6, "TC": 0.9},
-    "education_tip": "Look for exact wording in official judgments rather than viral summaries."
+    "signals": {"SR": 0.7, "CC": 0.4, "SM": 0.3, "EQ": 0.5, "TC": 0.9},
+    "education_tip": "Check the primary court order text or government notifications."
   },
-
   "mars has liquid oceans today": {
     "verdict": "Likely False",
     "confidence": 0.95,
     "evidence": [
       {
-        "text": "NASA states Mars only has ice and traces of water vapor, no liquid oceans.",
+        "text": "NASA: Current evidence indicates no liquid oceans on Mars today.",
         "link": "https://www.nasa.gov",
-        "source": "NASA",
+        "source": "nasa.gov",
         "stance": "refute"
       }
     ],
     "signals": {"SR": 0.95, "CC": 0.9, "SM": 0.8, "EQ": 0.9, "TC": 1.0},
-    "education_tip": "Prefer official scientific agencies like NASA for space-related claims."
+    "education_tip": "Use scientific agency sources like NASA for space claims."
   }
 }

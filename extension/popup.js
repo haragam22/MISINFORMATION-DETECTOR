@@ -3,7 +3,7 @@
 // ========== CONFIG =========
 // Put your backend URL here. For local dev use http://localhost:8000/verify
 // For production use deployed URL like "https://your-backend.com/verify"
-const BACKEND_VERIFY_URL = "http://localhost:8000/verify"; // <--- CHANGE BEFORE DEMO
+const BACKEND_VERIFY_URL = "https://misinformation-detector-f3wm.onrender.com/verify"; // <--- CHANGE BEFORE DEMO
 // ============================
 
 /** Utilities **/

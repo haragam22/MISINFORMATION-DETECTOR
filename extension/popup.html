@@ -1,55 +1,71 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TruthLens</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="icons/icon48.png" class="logo" alt="TruthLens">
-      <h1>TruthLens</h1>
+  <div class="wrap">
+    <header class="hdr">
+      <div class="brand">
+        <div class="logo">TL</div>
+        <div class="brand-text">
+          <div class="app-name">TruthLens</div>
+          <div class="tag">FactCheck • Explain • Educate</div>
+        </div>
+      </div>
+      <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
     </header>
 
-    <div class="input-block">
-      <label for="claimInput">Claim (selected text will auto-populate)</label>
-      <textarea id="claimInput" placeholder="Paste a claim or use right-click → Check Claim" rows="3"></textarea>
-      <div class="btn-row">
-        <button id="checkSelectionBtn">Check Selection</button>
-        <button id="checkPageBtn">Check Full Page</button>
-      </div>
-    </div>
+    <main class="main">
+      <label class="label">Claim (selected text auto-populates)</label>
+      <textarea id="claimInput" class="input" placeholder="Paste a claim or highlight text on a page and use right-click → Check Claim"></textarea>
 
-    <div id="status" class="status">Ready</div>
-
-    <div id="resultCard" class="result-card hidden">
-      <div id="verdictLine" class="verdict-line"></div>
-      <div id="confidenceLine" class="confidence-line"></div>
-
-      <div class="section">
-        <h3>Top Evidence</h3>
-        <div id="evidenceList"></div>
+      <div class="controls">
+        <button id="checkSelectionBtn" class="btn primary">Check Selection</button>
+        <button id="checkPageBtn" class="btn ghost">Check Full Page</button>
       </div>
 
-      <div class="section">
-        <h3>Transparency</h3>
-        <pre id="signalsPre" class="signals-pre"></pre>
-      </div>
+      <div id="status" class="status">Ready</div>
 
-      <div class="section">
-        <h3>Education Tip</h3>
-        <div id="educationTip"></div>
-      </div>
+      <section id="result" class="result hidden" aria-live="polite">
+        <div class="result-top">
+          <div id="badge" class="badge neutral">—</div>
+          <div class="meta">
+            <div id="confidence" class="confidence">Confidence —</div>
+            <div id="sources" class="sources"></div>
+          </div>
+        </div>
 
-      <button id="rawBtn" class="raw-btn">Show raw JSON</button>
-    </div>
+        <div id="evidenceList" class="evidence-list"></div>
 
-    <footer>
-      <small>Demo mode • backendUrl in popup.js</small>
+        <div class="signals">
+          <h4>Transparency</h4>
+          <div id="signalsGrid" class="signals-grid"></div>
+        </div>
+
+        <div class="education">
+          <h4>Education tip</h4>
+          <div id="educationTip" class="tip"></div>
+        </div>
+
+        <div class="raw-row">
+          <button id="rawBtn" class="btn small">Show raw JSON</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ftr">
+      <small>Demo • Backend URL configurable in popup.js</small>
     </footer>
   </div>
 
-<script src="popup.js"></script>
+  <script src="popup.js"></script>
 </body>
 </html>

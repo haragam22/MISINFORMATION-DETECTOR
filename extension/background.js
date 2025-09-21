@@ -1,37 +1,44 @@
 // background.js - service worker
 chrome.runtime.onInstalled.addListener(() => {
-  // Create context menu for selected text
   chrome.contextMenus.create({
-    id: "check-claim-selection",
+    id: "truthlens-check-selection",
     title: "Check Claim with TruthLens",
     contexts: ["selection"]
   });
 });
 
-// Listen for context menu click
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId === "check-claim-selection") {
-    // Ask the content script in the active tab for the selected text
+  if (info.menuItemId !== "truthlens-check-selection") return;
+  try {
+    // store the selection (try to get from content script)
+    let selected = info.selectionText || "";
+
+    // Inject content script (MV3) to get exact selection if possible
     try {
-      const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      chrome.tabs.sendMessage(activeTab.id, { action: "GET_SELECTION" }, (resp) => {
-        const selectedText = (resp && resp.selection) ? resp.selection : (info.selectionText || "");
-        // Save selection to storage for popup to read
-        chrome.storage.local.set({ selectedClaim: selectedText }, () => {
-          // Open popup (user gesture not required when triggered by context menu callback)
-          chrome.action.openPopup().catch((err) => {
-            // fallback: if openPopup fails, notify user
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content.js"]
+      });
+      chrome.tabs.sendMessage(tab.id, { action: "GET_SELECTION" }, (resp) => {
+        if (resp && resp.selection) selected = resp.selection;
+        chrome.storage.local.set({ selectedClaim: selected }, () => {
+          chrome.action.openPopup().catch(() => {
             chrome.notifications && chrome.notifications.create({
               type: "basic",
-              iconUrl: 'icons/icon48.png',
-              title: 'TruthLens',
-              message: 'Popup could not be opened automatically. Click the extension icon to open.'
+              iconUrl: "icons/icon48.png",
+              title: "TruthLens",
+              message: "Click the TruthLens icon in the toolbar to open the popup."
             });
           });
         });
       });
-    } catch (err) {
-      console.error("background.onClicked error:", err);
+    } catch (e) {
+      // fallback if injection fails
+      chrome.storage.local.set({ selectedClaim: selected }, () => {
+        chrome.action.openPopup().catch(() => {});
+      });
     }
+  } catch (err) {
+    console.error("Context menu error:", err);
   }
 });

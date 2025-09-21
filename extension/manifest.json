@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "FactCheck AI - TruthLens",
+  "name": "TruthLens — FactCheck",
   "version": "1.0",
-  "description": "Select text, right-click → Check Claim. Or open popup to check full page.",
-  "permissions": ["contextMenus", "scripting", "activeTab", "storage", "tabs"],
+  "description": "Highlight text → right-click → Check Claim. Or open popup to check full page. Shows evidence, transparency & tips.",
+  "permissions": ["contextMenus", "scripting", "activeTab", "storage", "tabs", "notifications"],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
@@ -19,6 +20,5 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-  "host_permissions": ["<all_urls>"]
+  }
 }
